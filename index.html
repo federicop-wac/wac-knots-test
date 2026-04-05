@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>WAC Knots & Skills Test</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="WAC Knot Test">
+<meta name="theme-color" content="#1A1814">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgMTgwIj4KICA8cmVjdCB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgcng9IjM2IiBmaWxsPSIjMUExODE0Ii8+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoOTAsODIpIj4KICAgIDxwYXRoIGQ9Ik0wLTMyIEM4LTMyIDI4LTI4IDI4LTEyIEMyOCAwIDE0IDggMCA4IEMtMTQgOC0yOCAwLTI4LTEyIEMtMjgtMjgtOC0zMiAwLTMyIFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0Y1RjNFRSIgc3Ryb2tlLXdpZHRoPSI2LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTAgOCBDMTQgOCAyOCAxNiAyOCAyOCBDMjggNDAgMTQgNDYgMCA0NiBDLTE0IDQ2LTI4IDQwLTI4IDI4IEMtMjggMTYtMTQgOCAwIDggWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjVGM0VFIiBzdHJva2Utd2lkdGg9IjYuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9Ii00MiIgeDI9IjAiIHkyPSItMzIiIHN0cm9rZT0iI0Y1RjNFRSIgc3Ryb2tlLXdpZHRoPSI2LjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPGxpbmUgeDE9IjAiIHkxPSI0NiIgeDI9IjAiIHkyPSI1NiIgc3Ryb2tlPSIjRjVGM0VFIiBzdHJva2Utd2lkdGg9IjYuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPC9nPgogIDx0ZXh0IHg9IjkwIiB5PSIxNjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0Y1RjNFRSIgbGV0dGVyLXNwYWNpbmc9IjIiPldBQyBLTk9UIFRFU1Q8L3RleHQ+Cjwvc3ZnPg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F5F3EE;
+    --surface: #FFFFFF;
+    --border: #E2DDD6;
+    --text: #1A1814;
+    --muted: #7A7570;
+    --pass-bg: #EAF4E8;
+    --pass-text: #2A6B24;
+    --pass-border: #5FAB55;
+    --needs-bg: #FDF0E6;
+    --needs-text: #9C4A0F;
+    --needs-border: #E07830;
+    --accent: #2C5F8A;
+    --accent-light: #E8F0F8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 40px;
+  }
+
+  header {
+    background: var(--text);
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  header h1 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  header span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .container { max-width: 600px; margin: 0 auto; padding: 20px 16px; }
+
+  .toast {
+    position: fixed;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: #2A6B24;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 200;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast.error { background: #9C4A0F; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .field { margin-bottom: 12px; }
+  .field:last-child { margin-bottom: 0; }
+
+  label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+
+  select, input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--bg);
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%237A7570' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+
+  select:focus, input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background-color: var(--surface);
+  }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.03em;
+    padding: 10px 0 6px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2px;
+  }
+
+  .skill-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 10px;
+  }
+  .skill-row:last-child { border-bottom: none; }
+
+  .skill-name {
+    flex: 1;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text);
+  }
+
+  .pill-group { display: flex; gap: 4px; flex-shrink: 0; }
+
+  .pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.15s;
+    white-space: nowrap;
+    touch-action: manipulation;
+  }
+
+  .pill.pass.active {
+    background: var(--pass-bg);
+    color: var(--pass-text);
+    border-color: var(--pass-border);
+  }
+
+  .pill.needs.active {
+    background: var(--needs-bg);
+    color: var(--needs-text);
+    border-color: var(--needs-border);
+  }
+
+  .final-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .final-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s;
+    touch-action: manipulation;
+  }
+
+  .final-btn.passed.active {
+    background: var(--pass-bg);
+    color: var(--pass-text);
+    border-color: var(--pass-border);
+  }
+
+  .final-btn.retest.active {
+    background: var(--needs-bg);
+    color: var(--needs-text);
+    border-color: var(--needs-border);
+  }
+
+  .submit {
+    width: 100%;
+    padding: 15px;
+    background: var(--text);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 4px;
+    letter-spacing: 0.01em;
+    transition: opacity 0.2s;
+    touch-action: manipulation;
+  }
+
+  .submit:disabled { opacity: 0.35; cursor: not-allowed; }
+  .submit:not(:disabled):active { opacity: 0.8; }
+
+  .spinner {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    vertical-align: middle;
+    margin-right: 6px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .note {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .skills-locked {
+    position: relative;
+  }
+
+  .lock-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(245,243,238,0.82);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    z-index: 10;
+    backdrop-filter: blur(1px);
+  }
+
+  .lock-overlay .lock-icon {
+    font-size: 24px;
+    opacity: 0.5;
+  }
+
+  .lock-overlay p {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+    text-align: center;
+    padding: 0 20px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>WAC Knots & Skills Test</h1>
+  <span>2026 BCC</span>
+</header>
+
+<div id="toast" class="toast"></div>
+
+<div class="container">
+
+  <div class="card">
+    <div class="card-title">Test info</div>
+    <div class="field">
+      <label>Instructor</label>
+      <select id="instructor">
+        <option value="">Select instructor…</option>
+        <!-- Add instructor names here -->
+        <option>Instructor 1</option>
+        <option>Instructor 2</option>
+        <option>Instructor 3</option>
+        <option>Instructor 4</option>
+        <option>Instructor 5</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Student</label>
+      <select id="student">
+        <option value="">Select student…</option>
+        <option>Greg Ali</option>
+        <option>Cailin Brashear</option>
+        <option>Daniel Broudy</option>
+        <option>Kathleen Chellman</option>
+        <option>Joe Clancy</option>
+        <option>Ava Curry</option>
+        <option>Kirsten Dodroe</option>
+        <option>Andrew Fitch</option>
+        <option>Leah Friedlander</option>
+        <option>Caitlin Graves</option>
+        <option>Colin Harrop</option>
+        <option>Sarah Kunkel</option>
+        <option>Megan Larkin</option>
+        <option>Ryan Leslie</option>
+        <option>Sanket Lokegaonkar</option>
+        <option>Garrett Manaster</option>
+        <option>Connor Marmion</option>
+        <option>Karina Mealey</option>
+        <option>Peter Nelson</option>
+        <option>Joe Paar</option>
+        <option>Federico Pennelli</option>
+        <option>Jack Percival</option>
+        <option>Sophia Presutti</option>
+        <option>Caeden Rainford</option>
+        <option>Devan Sack</option>
+        <option>Naomi Seid</option>
+        <option>Matthew Short</option>
+        <option>Sarah Stoops</option>
+        <option>Nora Tan</option>
+        <option>Julie Van</option>
+        <option>Julia Ver Voort</option>
+        <option>Alison Zarider</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="skills-locked" id="skills-wrapper">
+    <div class="lock-overlay" id="lock-overlay">
+      <span class="lock-icon">🔒</span>
+      <p>Select an instructor and student to begin the test</p>
+    </div>
+    <div class="card" id="skills-card"></div>
+  </div>
+
+  <div class="card" id="final-card">
+    <div class="card-title">Overall result</div>
+    <div class="final-row">
+      <button class="final-btn passed" id="btn-passed" onclick="setFinal('passed')">✓ Passed</button>
+      <button class="final-btn retest" id="btn-retest" onclick="setFinal('retest')">↩ Needs retest</button>
+    </div>
+  </div>
+
+  <button class="submit" id="submit-btn" onclick="submitTest()">Save result</button>
+  <p class="note">Results are saved to the shared Google Sheet.<br>No coaching — student must know knot and explain use without hints.</p>
+
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// CONFIGURATION — replace with your deployed
+// Google Apps Script Web App URL after setup
+// ─────────────────────────────────────────────
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzOoqv4iqzl-hCgNkGKDr7r3zc3hKco1_MnS8UTyOM6_RMCpSbrLqjfSrZHNY4j72zFvQ/exec';
+
+// ─────────────────────────────────────────────
+// Skills data
+// ─────────────────────────────────────────────
+const CATEGORIES = [
+  { name: 'Climb', skills: [
+    'Girth hitch onto harness (personal anchor to harness)',
+    'Re-woven figure eight (tie into harness)',
+    'Harness check (on correctly, double-backed)'
+  ]},
+  { name: 'Belay', skills: [
+    'Climbing signals (on belay?, belay on, climbing? Climb on)',
+    'Munter Hitch (belay and rappel without belay device)',
+    'Belaying w/ Munter hitch (Pull-Brake-Under-Slide belay)',
+    'Belaying w/ ATC (Pull-Brake-Under-Slide belay)',
+    'Device-Mule Hitch (rescue hitch, device-mule-overhand)'
+  ]},
+  { name: 'Rappel', skills: [
+    'Autoblock (third hand backup when rappelling)',
+    'Stopper knot (one side of double fisherman\'s, end of rappel rope)',
+    'Extended Rappel w/ ATC (dominant and nondominant hand, third hand backup)',
+    'Rappel commands (on rappel, off rappel)',
+    'Leg wrap (rope around back, wrapped up non-brake side leg)',
+    'Rappel w/ Munter hitch (dominant hand, third hand backup, NOT extended)'
+  ]},
+  { name: 'Glacier Travel', skills: [
+    'Figure eight on a bight (create a loop in rope)',
+    'Prusik hitch (friction hitch)',
+    'Passing protection on a running belay (tied in for glacier travel)',
+    'Hip belay (snow travel, conditions dependent)'
+  ]},
+  { name: 'Other', skills: [
+    'Passing protection on a fixed hand line (tied in with prusik)',
+    'Overhand knot (tie off other knots)',
+    'Clove hitch (useful in belay setups)',
+    'Water knot (tie two ends of webbing, rappel anchor rigging)',
+    'Double fisherman (tie two ends of a rope, perlon & climbing rope)',
+    'Klemheist hitch (friction hitch, 5+ wraps, can use webbing)',
+    'Reversed and opposed carabiners (in lieu of locking carabiner)',
+    'Single Butterfly coil with a Nail Bite finish (rope storage)',
+    'Thread & lower technique for cleaning sport anchors'
+  ]}
+];
+
+let skillState = {};
+let finalMark = null;
+
+function buildSkillsUI() {
+  const card = document.getElementById('skills-card');
+  let html = '<div class="card-title">Skills & knots</div>';
+
+  CATEGORIES.forEach(cat => {
+    html += `<div class="section-label">${cat.name}</div>`;
+    cat.skills.forEach((skill, si) => {
+      const key = `${cat.name}|${si}`;
+      skillState[key] = null;
+      html += `
+        <div class="skill-row">
+          <span class="skill-name">${skill}</span>
+          <div class="pill-group">
+            <button class="pill pass" data-key="${key}" onclick="setSkill('${key}','pass',this)">Pass</button>
+            <button class="pill needs" data-key="${key}" onclick="setSkill('${key}','needs',this)">Needs work</button>
+          </div>
+        </div>`;
+    });
+  });
+
+  card.innerHTML = html;
+}
+
+function setSkill(key, val, btn) {
+  skillState[key] = val;
+  const group = btn.closest('.pill-group');
+  group.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function setFinal(val) {
+  finalMark = val;
+  document.getElementById('btn-passed').classList.toggle('active', val === 'passed');
+  document.getElementById('btn-retest').classList.toggle('active', val === 'retest');
+}
+
+function showToast(msg, isError = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isError ? ' error' : '') + ' show';
+  setTimeout(() => t.className = 'toast' + (isError ? ' error' : ''), 3000);
+}
+
+async function submitTest() {
+  const instructor = document.getElementById('instructor').value;
+  const student = document.getElementById('student').value;
+
+  if (!instructor) { showToast('Please select an instructor', true); return; }
+  if (!student) { showToast('Please select a student', true); return; }
+  if (!finalMark) { showToast('Please set an overall result', true); return; }
+
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Saving…';
+
+  const now = new Date();
+  const date = now.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  const time = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+
+  // Build flat payload for the sheet
+  const payload = {
+    date, time, instructor, student,
+    overall: finalMark === 'passed' ? 'Passed' : 'Needs Retest'
+  };
+
+  CATEGORIES.forEach(cat => {
+    cat.skills.forEach((skill, si) => {
+      const key = `${cat.name}|${si}`;
+      const val = skillState[key];
+      payload[`${cat.name}: ${skill}`] = val === 'pass' ? 'Pass' : val === 'needs' ? 'Needs Work' : '';
+    });
+  });
+
+  try {
+    const resp = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+    const result = await resp.json();
+    if (result.status === 'ok') {
+      showToast('Result saved to Google Sheet ✓');
+      resetForm();
+    } else {
+      throw new Error(result.message || 'Unknown error');
+    }
+  } catch (err) {
+    console.error(err);
+    showToast('Save failed — check connection', true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save result';
+  }
+}
+
+function resetForm() {
+  document.getElementById('instructor').value = '';
+  document.getElementById('student').value = '';
+  finalMark = null;
+  document.getElementById('btn-passed').classList.remove('active');
+  document.getElementById('btn-retest').classList.remove('active');
+  buildSkillsUI();
+  checkLock();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function checkLock() {
+  const instructor = document.getElementById('instructor').value;
+  const student = document.getElementById('student').value;
+  const locked = !instructor || !student;
+  document.getElementById('lock-overlay').style.display = locked ? 'flex' : 'none';
+  document.getElementById('final-card').style.opacity = locked ? '0.4' : '1';
+  document.getElementById('final-card').style.pointerEvents = locked ? 'none' : 'auto';
+  document.getElementById('submit-btn').disabled = locked;
+}
+
+document.getElementById('instructor').addEventListener('change', checkLock);
+document.getElementById('student').addEventListener('change', checkLock);
+
+buildSkillsUI();
+checkLock();
+</script>
+</body>
+</html>
